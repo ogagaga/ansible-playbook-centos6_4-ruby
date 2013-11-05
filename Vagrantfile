@@ -10,7 +10,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "centos64_64"
+  config.vm.box = "CentOS63_64"
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
@@ -19,11 +19,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 80 on the guest machine.
-  config.vm.network :forwarded_port, guest: 80, host: 8080
+  # config.vm.network :forwarded_port, guest: 80, host: 8080
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
-  config.vm.network :private_network, ip: "192.168.33.10"
+  config.vm.network :private_network, ip: "192.168.33.18"
 
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
@@ -39,6 +39,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
   # config.vm.synced_folder "../data", "/vagrant_data"
+
+  config.vm.hostname = "devruby"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
@@ -60,6 +62,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # are contained in a directory path relative to this Vagrantfile.
   # You will need to create the manifests directory and a manifest in
   # the file centos64_64.pp in the manifests_path directory.
+
+  config.vm.provision :ansible do |ansible|
+    ansible.playbook = "provisioning/site.yml"
+    ansible.verbose = "v"
+  end
+
   #
   # An example Puppet manifest to provision the message of the day:
   #
