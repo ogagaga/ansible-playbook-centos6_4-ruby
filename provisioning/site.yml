@@ -6,4 +6,5 @@
     - group_vars/dev.yml
 
   roles:
+    - common
     
