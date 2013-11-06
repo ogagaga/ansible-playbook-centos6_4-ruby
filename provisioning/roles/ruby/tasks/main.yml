@@ -22,4 +22,3 @@
   with_items:
     - bundler
     - passenger
-    - capistrano
