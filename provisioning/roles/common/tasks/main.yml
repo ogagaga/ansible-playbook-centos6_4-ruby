@@ -51,6 +51,8 @@
     - man
     - ntp
     - tree
+  tags:
+    - common
 
 - name: replace openssl
   command: yum -y replace openssl --replace-with=openssl10
