@@ -22,6 +22,7 @@
   with_items:
     - bundler
     - passenger
+    - rails
   tags:
     - gem
 
