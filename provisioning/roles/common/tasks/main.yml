@@ -57,3 +57,7 @@
 - name: replace openssl
   command: yum -y replace openssl --replace-with=openssl10
 
+- name: Copy resolv.conf
+  template: src=vagrant_resolv.conf.j2 dest=/etc/resolv.conf owner=root group=root mode=0644 backup=yes
+  tags:
+  - resolv
