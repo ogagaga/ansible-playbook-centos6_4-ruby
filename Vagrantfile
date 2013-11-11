@@ -59,7 +59,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provider :virtualbox do |vb|
     # Don't boot with headless mode
     vb.gui = false
-    vb.name = "ansible-centos6_3-ruby"
+    vb.name = "ansible-centos6_4-ruby"
   
     # Use VBoxManage to customize the VM. For example to change memory:
     vb.customize ["modifyvm", :id, "--memory", "1024"]
